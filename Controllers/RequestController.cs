@@ -33,7 +33,7 @@ namespace API.Controllers
             return request;
         }
 
-        // POST: api/Todo
+        // POST: api/Request
         [HttpPost]
         public async Task<ActionResult<Request>> PostTodoItem(Request item)
         {
