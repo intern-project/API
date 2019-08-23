@@ -9,6 +9,6 @@ namespace API.Models
         {
         }
 
-        public DbSet<Request> Requests { get; set; }
+        public DbSet<Request> Request { get; set; }
     }
 }
