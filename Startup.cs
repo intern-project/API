@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using API.Models;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.EntityFrameworkCore.InMemory;
 
 namespace API
 {
@@ -28,7 +30,8 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RequestContext>(opt =>
-                opt.UseInMemoryDatabase("Requests"));
+                opt.UseSqlServer(Configuration.GetConnectionString("RequestsContext")));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -47,6 +50,7 @@ namespace API
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseCors(options => options.WithOrigins("http://localhost:4200"));
         }
     }
 }

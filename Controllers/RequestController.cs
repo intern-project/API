@@ -16,14 +16,14 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Request>>> GetRequests()
         {
-            return await _context.Requests.ToListAsync();
+            return await _context.Request.ToListAsync();
         }
 
         // GET: api/Request/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Request>> GetRequest(long id)
         {
-            var request = await _context.Requests.FindAsync(id);
+            var request = await _context.Request.FindAsync(id);
 
             if (request == null)
             {
@@ -37,7 +37,7 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<Request>> PostTodoItem(Request item)
         {
-            _context.Requests.Add(item);
+            _context.Request.Add(item);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetRequest), new { id = item.rid }, item);
@@ -49,11 +49,11 @@ namespace API.Controllers
         {
             _context = context;
 
-            if (_context.Requests.Count() == 0)
+            if (_context.Request.Count() == 0)
             {
                 // Create a new TodoItem if collection is empty,
                 // which means you can't delete all TodoItems.
-                _context.Requests.Add(new Request { name = "Item1" });
+                _context.Request.Add(new Request { name = "Item1" });
                 _context.SaveChanges();
             }
 
