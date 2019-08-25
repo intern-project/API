@@ -6,22 +6,23 @@ using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.Threading.Tasks;
 
 public class RequestRepository {
-    private string connectionString;
-    public RequestRepository() {
+    private static string connectionString;
+    public  RequestRepository() {
         connectionString = @"Server=localhost;Database=LOAN;User=SA;Password=Ride2die;ConnectRetryCount=0;MultipleActiveResultSets=true";
     }
 
-    public IDbConnection Connection {
+    public static IDbConnection Connection {
         get {
             return new SqlConnection(connectionString);
         }
     }
 
-    public void Add(Request request){
-        using (IDbConnection dbConnection = Connection){
-            string sQuary = "INSERT INTO REQUESTS (rid,name,age,address,contact,job,ammount,duration,reason,pending,accepted,declined,nic,doc)"
+    public static  void Add(Request request){
+        using  (IDbConnection dbConnection = Connection){
+             string sQuary = "INSERT INTO REQUESTS (rid,name,age,address,contact,job,ammount,duration,reason,pending,accepted,declined,nic,doc)"
                             + "VALUES(@rid, @name, @age, @address, @contact, @job, @ammount, @duration, @reason, @pending, @accepted, @declined, @nic, @doc)";
             dbConnection.Open();
             dbConnection.Execute(sQuary, request);
@@ -44,13 +45,13 @@ public class RequestRepository {
     //     }
     // }
 
-    // public void Update(Request request){
-    //     using (IDbConnection dbConnection = Connection){
-    //         string sQuary = "UPDATE REQUESTS SET name = @name, address = @address,reason = @reason,"
-    //                         + "pending = @pending,accepted = @accepted, declined = @declined"
-    //                         + "WHERE rid = @rid";
-    //         dbConnection.Open();
-    //         dbConnection.Query(sQuary, request);
-    //     }
-    // }
+    public static void Update(Request request){
+        using (IDbConnection dbConnection = Connection){
+            string sQuary = "UPDATE REQUESTS SET name = @name, address = @address,reason = @reason,"
+                            + "pending = @pending,accepted = @accepted, declined = @declined"
+                            + "WHERE rid = @rid";
+            dbConnection.Open();
+            dbConnection.Query(sQuary, request);
+        }
+    }
 }
