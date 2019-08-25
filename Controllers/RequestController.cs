@@ -10,54 +10,68 @@ namespace API.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class RequestController : ControllerBase
+    public class RequestController : Controller
     {
-        // GET: api/Request
+        private readonly RequestRepository requestRepository;
+        public RequestController(){
+            requestRepository = new RequestRepository();
+        }
+
+        // GET: api/values
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Request>>> GetRequests()
+        public IEnumerable<Request> Get()
         {
-            return await _context.Request.ToListAsync();
+            return requestRepository.GetAll();
         }
 
-        // GET: api/Request/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Request>> GetRequest(long id)
-        {
-            var request = await _context.Request.FindAsync(id);
+        //PUT api/values/5
+        // [HttpPut("{id}")]
+        // public void Put(string id, [FromBody]Request request){
+        //     request.rid = id;
+        //     if (ModelState.IsValid) {
+        //         RequestRepository.Update(request);
+        //     }
+        // }
 
-            if (request == null)
-            {
-                return NotFound();
-            }
+        // // GET: api/Request/5
+        // [HttpGet("{id}")]
+        // public async Task<ActionResult<Request>> GetRequest(long id)
+        // {
+        //     var request = await _context.Request.FindAsync(id);
 
-            return request;
-        }
+        //     if (request == null)
+        //     {
+        //         return NotFound();
+        //     }
+
+        //     return request;
+        // }
 
         // POST: api/Request
-        [HttpPost]
-        public async Task<ActionResult<Request>> PostTodoItem(Request item)
-        {
-            _context.Request.Add(item);
-            await _context.SaveChangesAsync();
+        // [HttpPost]
+        // public async Task<ActionResult<Request>> PostTodoItem(Request item)
+        // {
+        //     _context.Request.Add(item);
+        //     await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetRequest), new { id = item.rid }, item);
-        }
+        //     return CreatedAtAction(nameof(GetRequest), new { id = item.rid }, item);
+        // }
 
-        private readonly RequestContext _context;
+        // private readonly RequestContext _context;
 
-        public RequestController(RequestContext context)
-        {
-            _context = context;
+        // public RequestController(RequestContext context)
+        // {
+        //     _context = context;
 
-            if (_context.Request.Count() == 0)
-            {
-                // Create a new TodoItem if collection is empty,
-                // which means you can't delete all TodoItems.
-                _context.Request.Add(new Request { name = "Item1" });
-                _context.SaveChanges();
-            }
+        //     if (_context.Request.Count() == 0)
+        //     {
+        //         // Create a new TodoItem if collection is empty,
+        //         // which means you can't delete all TodoItems.
+        //         _context.Request.Add(new Request { name = "Item1" });
+        //         _context.SaveChanges();
+        //     }
 
-        }
+        // }
     }
 
 }
