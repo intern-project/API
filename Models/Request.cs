@@ -15,9 +15,9 @@ namespace API.Models
         public string reason { get; set; }
         public string doc { get; set; }
         public string ammount { get; set; }
-        public int duration { get; set; }
-        public byte pending { get; set; }
-        public byte accepted { get; set; }
-        public byte declined { get; set; }
+        public string duration { get; set; }
+        public int pending { get; set; }
+        public int accepted { get; set; }
+        public int declined { get; set; }
     }
 }
