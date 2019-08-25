@@ -4,11 +4,14 @@ using System.Threading.Tasks;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Web.Http.Cors;
 
 namespace API.Controllers {
 
     [Route ("api/[controller]")]
     [ApiController]
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+    
     public class RequestController : Controller {
         private readonly RequestRepository requestRepository;
         public RequestController () {
