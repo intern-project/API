@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 public class RequestRepository {
     private static string connectionString;
     public  RequestRepository() {
-        connectionString = @"Server=localhost;Database=LOAN;User=SA;Password=Ride2die;ConnectRetryCount=0;MultipleActiveResultSets=true";
+        connectionString = @"Server=192.168.8.101, 1433;Database=LOAN;User=SA;Password=Ride2die;ConnectRetryCount=0;MultipleActiveResultSets=true";
+        // connectionString = @"Server=localhost;Database=LOAN;User=SA;Password=Ride2die;ConnectRetryCount=0;MultipleActiveResultSets=true";
     }
 
     public static IDbConnection Connection {
