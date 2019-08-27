@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 public class RequestRepository {
     private static string connectionString;
     public  RequestRepository() {
-        connectionString = @"Server=192.168.8.101, 1433;Database=LOAN;User=SA;Password=Ride2die;ConnectRetryCount=0;MultipleActiveResultSets=true";
+        connectionString = @"Server=192.168.8.103, 1433;Database=LOAN;User=SA;Password=Udara@123;ConnectRetryCount=0;MultipleActiveResultSets=true";
         // connectionString = @"Server=localhost;Database=LOAN;User=SA;Password=Ride2die;ConnectRetryCount=0;MultipleActiveResultSets=true";
     }
 
@@ -33,7 +33,8 @@ public class RequestRepository {
     public  IEnumerable<Request> GetAll() {
         using (IDbConnection dbConnection = Connection){
             dbConnection.Open();
-            return dbConnection.Query<Request>("SELECT * FROM REQUESTS");
+            return dbConnection.Query<Request>("dbo.LoanRequests", 
+        commandType: CommandType.StoredProcedure);
         }
     }
 
@@ -48,11 +49,15 @@ public class RequestRepository {
 
     public static void Update(Request request){
         using (IDbConnection dbConnection = Connection){
-            string sQuary = "UPDATE REQUESTS SET name = @name, address = @address,reason = @reason,"
-                            + "pending = @pending,accepted = @accepted, declined = @declined"
-                            + "WHERE rid = @rid";
+            var reason = request.reason;
+            var pending = request.pending;
+            var accepted = request.accepted;
+            var declined = request.declined;
+            var rid = request.rid;
+
+            string sQuary = "UPDATE REQUESTS SET " + "pending = "+ pending +"," + "accepted =" + accepted + ","+ "declined =" + declined+ " WHERE rid =" + rid;
             dbConnection.Open();
-            dbConnection.Query(sQuary, request);
+            dbConnection.Query<Request>(sQuary, request);
         }
     }
 }
