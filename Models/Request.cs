@@ -5,7 +5,7 @@ namespace API.Models
     public class Request
     {
         [Key]
-        public string rid { get; set; }
+        public int rid { get; set; }
         public string name { get; set; }
         public string nic { get; set; }
         public string address { get; set; }

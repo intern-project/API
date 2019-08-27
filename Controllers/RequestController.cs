@@ -26,7 +26,7 @@ namespace API.Controllers {
 
         //PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(string id, [FromBody]Request request){
+        public void Put(int id, [FromBody]Request request){
             request.rid = id;
             if (ModelState.IsValid) {
                 RequestRepository.Update(request);

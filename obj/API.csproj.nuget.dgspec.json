@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/home/ubandara/Documents/Intern/Api2/API/API.csproj": {}
+    "/home/lahiru/Documents/LB_I/API/API.csproj": {}
   },
   "projects": {
-    "/home/ubandara/Documents/Intern/Api2/API/API.csproj": {
+    "/home/lahiru/Documents/LB_I/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ubandara/Documents/Intern/Api2/API/API.csproj",
+        "projectUniqueName": "/home/lahiru/Documents/LB_I/API/API.csproj",
         "projectName": "API",
-        "projectPath": "/home/ubandara/Documents/Intern/Api2/API/API.csproj",
-        "packagesPath": "/home/ubandara/.nuget/packages/",
-        "outputPath": "/home/ubandara/Documents/Intern/Api2/API/obj/",
+        "projectPath": "/home/lahiru/Documents/LB_I/API/API.csproj",
+        "packagesPath": "/home/lahiru/.nuget/packages/",
+        "outputPath": "/home/lahiru/Documents/LB_I/API/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/home/ubandara/.nuget/NuGet/NuGet.Config"
+          "/home/lahiru/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
