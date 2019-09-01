@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ubandara/Documents/Intern/Api2/API/API.csproj": {}
+    "/home/ubandara/Documents/Intern/Api-New/API/API.csproj": {}
   },
   "projects": {
-    "/home/ubandara/Documents/Intern/Api2/API/API.csproj": {
+    "/home/ubandara/Documents/Intern/Api-New/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ubandara/Documents/Intern/Api2/API/API.csproj",
+        "projectUniqueName": "/home/ubandara/Documents/Intern/Api-New/API/API.csproj",
         "projectName": "API",
-        "projectPath": "/home/ubandara/Documents/Intern/Api2/API/API.csproj",
+        "projectPath": "/home/ubandara/Documents/Intern/Api-New/API/API.csproj",
         "packagesPath": "/home/ubandara/.nuget/packages/",
-        "outputPath": "/home/ubandara/Documents/Intern/Api2/API/obj/",
+        "outputPath": "/home/ubandara/Documents/Intern/Api-New/API/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"

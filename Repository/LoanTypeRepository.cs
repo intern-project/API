@@ -11,8 +11,10 @@ using System.Threading.Tasks;
 public class LoanTypeRepository {
     private static string connectionString;
     public  LoanTypeRepository() {
-        connectionString = @"Server=192.168.8.101, 1433;Database=LOAN;User=SA;Password=Ride2die;ConnectRetryCount=0;MultipleActiveResultSets=true";
+        // connectionString = @"Server=192.168.8.101, 1433;Database=LOAN;User=SA;Password=Ride2die;ConnectRetryCount=0;MultipleActiveResultSets=true";
         // connectionString = @"Server=localhost;Database=LOAN;User=SA;Password=Ride2die;ConnectRetryCount=0;MultipleActiveResultSets=true";
+        connectionString = @"Server=localhost;Database=LOAN;User=SA;Password=Udara@123;ConnectRetryCount=0;MultipleActiveResultSets=true";
+
 
     }
 
@@ -24,17 +26,17 @@ public class LoanTypeRepository {
     // add to db
     public static  void Add(LoanType loanType){
         using  (IDbConnection dbConnection = Connection){
-             string quary = "INSERT INTO LoanTypeTabel (id, label, rate)"
-                            + "VALUES(@id, @label, @rate)";
+             string quary = "dbo.AddLoanType";
             dbConnection.Open();
-            dbConnection.Execute(quary, loanType);
+            dbConnection.Query<LoanType>(quary, loanType, commandType: CommandType.StoredProcedure);
         }
     }
-    // get from db
+    // get all from db
     public static IEnumerable<LoanType> GetAll() {
         using (IDbConnection dbConnection = Connection){
+             string quary = "dbo.SelectAllLoanTypes";
             dbConnection.Open();
-            return dbConnection.Query<LoanType>("SELECT * FROM LoanTypeTabel");
+            return dbConnection.Query<LoanType>(quary, commandType: CommandType.StoredProcedure);
         }
     }
     // get loan type by id
@@ -49,12 +51,21 @@ public class LoanTypeRepository {
 
 
     // update loan type
-    public static void Update(LoanType loanType){
+    public static void Update( LoanType loanType){
         using (IDbConnection dbConnection = Connection){
-            string quary = "UPDATE LoanTypeTabel SET rate = @rate"
-                            + "WHERE id = @id";
+            var newRate = loanType.rate;
+            var id = loanType.id;
+            string quary = "dbo.UpdateLoanType";
             dbConnection.Open();
-            dbConnection.Query(quary, loanType);
+            dbConnection.Query<LoanType>(quary, loanType, commandType: CommandType.StoredProcedure);
+        }
+    }
+    // delete loan type
+    public static void Delete(int id) {
+        using (IDbConnection dbConnection = Connection) {
+            string quary = "dbo.DeleteLoanType";
+            dbConnection.Open();
+            dbConnection.Query<LoanType>(quary, new{id = id}, commandType: CommandType.StoredProcedure);
         }
     }
 }

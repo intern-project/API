@@ -4,11 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using API.Models;
+using System.Web.Http.Cors;
+
 
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+
     public class LoanTypesController : Controller
     {
         private readonly LoanTypeRepository loanTypeRepository;
@@ -49,9 +53,11 @@ namespace Api.Controllers
         }
 
         // DELETE api/LoanTypes/5
-    //     [HttpDelete("{id}")]
-    //     public void Delete(int id)
-    //     {
-    //     }
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            if (ModelState.IsValid) 
+                LoanTypeRepository.Delete(id);
+        }
     }
 }

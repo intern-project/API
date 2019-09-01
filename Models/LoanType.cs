@@ -7,7 +7,7 @@ namespace API.Models
     {
         public int id { get; set; }
         public string label { get; set; }
-        public int rate { get; set; }
+        public double rate { get; set; }
 
 
     }
