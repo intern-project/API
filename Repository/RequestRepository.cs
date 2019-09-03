@@ -11,8 +11,10 @@ using Microsoft.EntityFrameworkCore;
 public class RequestRepository {
     private static string connectionString;
     public RequestRepository () {
-        connectionString = @"Server=192.168.8.103, 1433;Database=LOAN;User=SA;Password=Udara@123;ConnectRetryCount=0;MultipleActiveResultSets=true";
+        // connectionString = @"Server=192.168.8.103, 1433;Database=LOAN;User=SA;Password=Udara@123;ConnectRetryCount=0;MultipleActiveResultSets=true";
         // connectionString = @"Server=localhost;Database=LOAN;User=SA;Password=Ride2die;ConnectRetryCount=0;MultipleActiveResultSets=true";
+        connectionString = @"Server=localhost;Database=LOAN;User=SA;Password=Udara@123;ConnectRetryCount=0;MultipleActiveResultSets=true";
+
     }
 
     public static IDbConnection Connection {
@@ -24,7 +26,7 @@ public class RequestRepository {
     public static void Add (Request request) {
         using (IDbConnection dbConnection = Connection) {
             dbConnection.Open ();
-            dbConnection.Query<Request> ("dbo.AddRequest",
+            dbConnection.Query<Request> ("dbo.MakeLoanRequest",
                 request,
                 commandType : CommandType.StoredProcedure);
         }
@@ -33,7 +35,7 @@ public class RequestRepository {
     public IEnumerable<Request> GetAll () {
         using (IDbConnection dbConnection = Connection) {
             dbConnection.Open ();
-            return dbConnection.Query<Request> ("dbo.LoanRequests",
+            return dbConnection.Query<Request> ("dbo.SelectLoanRequests",
                 commandType : CommandType.StoredProcedure);
         }
     }
