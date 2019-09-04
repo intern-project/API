@@ -24,7 +24,7 @@ namespace API.Controllers {
 
         // GET: api/values
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "officer")]
         public IEnumerable<Request> Get () {
             return requestRepository.GetAll ();
         }

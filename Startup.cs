@@ -79,9 +79,9 @@ namespace API {
             }
 
             app.UseCors("CorsPolicy");
-
+             app.UseAuthentication();
             app.UseMvc ();
-            app.UseAuthentication();
+           
         }
     }
 }
