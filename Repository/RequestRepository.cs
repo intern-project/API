@@ -59,7 +59,7 @@ public class RequestRepository {
             var declined = request.declined;
             var rid = request.rid;
 
-            string sQuary = "UPDATE REQUESTS SET " + "pending = "+ pending +"," + "accepted =" + accepted + ","+ "declined =" + declined+ " WHERE rid =" + rid;
+            string sQuary = "UPDATE MakeRequest SET " + "pending = "+ pending +"," + "accepted =" + accepted + ","+ "declined =" + declined+ " WHERE rid =" + rid;
             dbConnection.Open();
             dbConnection.Query<Request>(sQuary, request);
         }
