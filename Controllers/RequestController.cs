@@ -5,9 +5,13 @@ using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Web.Http.Cors;
+<<<<<<< HEAD
 using System.IO;
 using System;
 using System.Net.Http.Headers;
+=======
+using Microsoft.AspNetCore.Authorization;
+>>>>>>> 7bdf795bf1f9451b0dab28f0cc6b6e9540294c42
 
 namespace API.Controllers {
 
@@ -23,6 +27,7 @@ namespace API.Controllers {
 
         // GET: api/values
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IEnumerable<Request> Get () {
             return requestRepository.GetAll ();
         }
