@@ -107,6 +107,7 @@ namespace API
                     Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles")),
                         RequestPath = "/StaticFiles"
             });
+
         }
     }
 }
