@@ -50,7 +50,8 @@ namespace TimeManagment.Controllers
 
            IEmployee existingUser = loginTypeRepository.login(user);
 
-            if (existingUser != null)
+
+            if (existingUser != null && existingUser.password==user.password )
             {
                 //Set the token values
                 string setRole = existingUser.role;
@@ -91,8 +92,8 @@ namespace TimeManagment.Controllers
             else
             {
                 IToken tokenToFront = new IToken();
-                tokenToFront.token = "";
-                tokenToFront.role = "";
+                tokenToFront.token = null;
+                tokenToFront.role = null;
 
                 return tokenToFront;
             }
