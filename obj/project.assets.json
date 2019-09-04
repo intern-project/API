@@ -14626,28 +14626,30 @@
     ]
   },
   "packageFolders": {
-    "/home/lahiru/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\scienter\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/lahiru/Documents/LB_I/API/API.csproj",
+      "projectUniqueName": "C:\\Users\\scienter\\Documents\\loanReq\\API\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "/home/lahiru/Documents/LB_I/API/API.csproj",
-      "packagesPath": "/home/lahiru/.nuget/packages/",
-      "outputPath": "/home/lahiru/Documents/LB_I/API/obj/",
+      "projectPath": "C:\\Users\\scienter\\Documents\\loanReq\\API\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\scienter\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\scienter\\Documents\\loanReq\\API\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/lahiru/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\scienter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
