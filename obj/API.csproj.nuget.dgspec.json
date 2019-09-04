@@ -1,28 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/home/ubandara/Documents/Intern/backend/API/API.csproj": {}
+    "E:\\Lahiru Api\\API\\API.csproj": {}
   },
   "projects": {
-    "/home/ubandara/Documents/Intern/backend/API/API.csproj": {
+    "E:\\Lahiru Api\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ubandara/Documents/Intern/backend/API/API.csproj",
+        "projectUniqueName": "E:\\Lahiru Api\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "/home/ubandara/Documents/Intern/backend/API/API.csproj",
-        "packagesPath": "/home/ubandara/.nuget/packages/",
-        "outputPath": "/home/ubandara/Documents/Intern/backend/API/obj/",
+        "projectPath": "E:\\Lahiru Api\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\Chamin\\.nuget\\packages\\",
+        "outputPath": "E:\\Lahiru Api\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/home/ubandara/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Chamin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
