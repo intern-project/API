@@ -30,6 +30,7 @@ namespace API.Controllers {
 
         //PUT api/values/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public void Put(int id, [FromBody]Request request){
             request.rid = id;
             if (ModelState.IsValid) {
@@ -53,6 +54,8 @@ namespace API.Controllers {
 
         //POST: api/Request
         [HttpPost]
+        [Authorize(Roles = "officer")]
+
         public void Post ([FromBody] Request request) {
             if (ModelState.IsValid)
                 RequestRepository.Add(request);
