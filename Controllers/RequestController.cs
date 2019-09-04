@@ -10,30 +10,36 @@ using System;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Authorization;
 
-namespace API.Controllers {
+namespace API.Controllers
+{
 
-    [Route ("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
-    
-    public class RequestController : Controller {
+
+    public class RequestController : Controller
+    {
         private readonly RequestRepository requestRepository;
-        public RequestController () {
-            requestRepository = new RequestRepository ();
+        public RequestController()
+        {
+            requestRepository = new RequestRepository();
         }
 
         // GET: api/values
         [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public IEnumerable<Request> Get () {
-            return requestRepository.GetAll ();
+        // [Authorize(Roles = "Admin")]
+        public IEnumerable<Request> Get()
+        {
+            return requestRepository.GetAll();
         }
 
         //PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Request request){
+        public void Put(int id, [FromBody]Request request)
+        {
             request.rid = id;
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
                 RequestRepository.Update(request);
             }
         }
@@ -54,7 +60,8 @@ namespace API.Controllers {
 
         //POST: api/Request
         [HttpPost]
-        public void Post ([FromBody] Request request) {
+        public void Post([FromBody] Request request)
+        {
             if (ModelState.IsValid)
                 RequestRepository.Add(request);
         }
@@ -75,44 +82,7 @@ namespace API.Controllers {
 
         // }
         // file upload
-        [HttpPost("upload"), DisableRequestSizeLimit]
-        public IActionResult Upload()
-        {
-            try
-            {
-                var file = Request.Form.Files[0];
-                var folderName = Path.Combine("StaticFiles", "Images");
-                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-
-                if (file.Length > 0)
-                {
-                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine(pathToSave, fileName);
-                    var dbPath = Path.Combine(folderName, fileName);
-
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-                    return Ok(new { dbPath });
-                }
-                else
-                {
-                    return BadRequest();
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal server error");
-            }
-        }
-        // get image 
-        [HttpGet]
-        public async Task<IActionResult> GetImage()
-        {
-            var image = System.IO.File.OpenRead("C:\\test\\random_image.jpeg");
-            return File(image, "image/jpeg");
-        } 
-            }
+    //     
+    }
 
 }

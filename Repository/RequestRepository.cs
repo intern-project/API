@@ -36,8 +36,7 @@ public class RequestRepository {
     public IEnumerable<Request> GetAll () {
         using (IDbConnection dbConnection = Connection) {
             dbConnection.Open ();
-            return dbConnection.Query<Request> ("dbo.SelectLoanRequests",
-                commandType : CommandType.StoredProcedure);
+            return dbConnection.Query<Request> ("dbo.SelectLoanRequests", commandType : CommandType.StoredProcedure);
         }
     }
 
@@ -59,7 +58,7 @@ public class RequestRepository {
             var declined = request.declined;
             var rid = request.rid;
 
-            string sQuary = "UPDATE REQUESTS SET " + "pending = "+ pending +"," + "accepted =" + accepted + ","+ "declined =" + declined+ " WHERE rid =" + rid;
+            string sQuary = "UPDATE MakeRequest SET " + "pending = "+ pending +"," + "accepted =" + accepted + ","+ "declined =" + declined+ " WHERE rid =" + rid;
             dbConnection.Open();
             dbConnection.Query<Request>(sQuary, request);
         }
