@@ -65,6 +65,11 @@ public class RequestRepository {
         }
     }
 
+    // get image 
+    // public static void ImageGet(Request request) {
+
+    // }
+
     // Update request for accept or decline Loan with SP
 
     // public static void Update (Request request) {

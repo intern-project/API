@@ -24,7 +24,6 @@ namespace API.Controllers {
 
         // GET: api/values
         [HttpGet]
-        [Authorize(Roles = "officer")]
         public IEnumerable<Request> Get () {
             return requestRepository.GetAll ();
         }
@@ -107,12 +106,13 @@ namespace API.Controllers {
             }
         }
         // get image 
-        [HttpGet]
-        public async Task<IActionResult> GetImage()
+        [HttpGet("{path}")]
+        public async Task<IActionResult> GetImage(string path)
         {
-            var image = System.IO.File.OpenRead("C:\\test\\random_image.jpeg");
+            
+            var image = System.IO.File.OpenRead(path);
             return File(image, "image/jpeg");
-        } 
-            }
+        }
+    }
 
 }
