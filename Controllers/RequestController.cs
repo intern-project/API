@@ -103,7 +103,14 @@ namespace API.Controllers {
             {
                 return StatusCode(500, "Internal server error");
             }
-} 
-    }
+        }
+        // get image 
+        [HttpGet]
+        public async Task<IActionResult> GetImage()
+        {
+            var image = System.IO.File.OpenRead("C:\\test\\random_image.jpeg");
+            return File(image, "image/jpeg");
+        } 
+            }
 
 }
