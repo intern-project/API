@@ -8,6 +8,7 @@ using System.Web.Http.Cors;
 using System.IO;
 using System;
 using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers {
 
@@ -23,6 +24,7 @@ namespace API.Controllers {
 
         // GET: api/values
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IEnumerable<Request> Get () {
             return requestRepository.GetAll ();
         }

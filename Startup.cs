@@ -15,6 +15,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace API {
     public class Startup {
@@ -43,6 +46,30 @@ namespace API {
                     .AllowCredentials ()
                 );
             });
+
+             //begin Authorization
+
+            string securityKey = "this_is_our_supper_long_security_key_for_token_validation_project_2018_09_07$smesk.in";
+            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
+
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        //what to validate
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        //setup validate data
+                        ValidIssuer = "smesk.in",
+                        ValidAudience = "readers",
+                        IssuerSigningKey = symmetricSecurityKey
+                    };
+                });
+
+            //Authorization
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +81,7 @@ namespace API {
             app.UseCors("CorsPolicy");
 
             app.UseMvc ();
+            app.UseAuthentication();
         }
     }
 }
