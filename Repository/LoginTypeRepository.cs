@@ -15,7 +15,7 @@ using System.Text;
 public class LoginTypeRepository {
     private static string connectionString;
     public  LoginTypeRepository() {
-        connectionString = @"Server=192.168.43.233, 1433;Database=LOAN;User=SA;Password=Udara@123;ConnectRetryCount=0;MultipleActiveResultSets=true";
+        connectionString = @"Server=localhost, 1433;Database=LOAN;User=SA;Password=Udara@123;ConnectRetryCount=0;MultipleActiveResultSets=true";
         // connectionString = @"Server=localhost;Database=LOAN;User=SA;Password=Ride2die;ConnectRetryCount=0;MultipleActiveResultSets=true";
 
     }

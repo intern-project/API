@@ -49,9 +49,10 @@ namespace Api.Controllers
         }
 
         // DELETE api/LoanTypes/5
-    //     [HttpDelete("{id}")]
-    //     public void Delete(int id)
-    //     {
-    //     }
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            LoanTypeRepository.Delete(id);
+        }
     }
 }

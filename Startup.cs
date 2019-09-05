@@ -44,6 +44,7 @@ namespace API
                     if (resolver != null)
                         (resolver as DefaultContractResolver).NamingStrategy = null;
                 });
+            services.AddSwaggerDocument();            
 
             services.AddCors(options =>
             {
@@ -93,6 +94,11 @@ namespace API
             app.UseMvc();
             app.UseAuthentication();
             app.UseStaticFiles(); // For the wwwroot folder
+            // Register the Swagger services
+            // Register the Swagger generator and the Swagger UI middlewares
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
+
 
             app.UseStaticFiles(new StaticFileOptions
             {
