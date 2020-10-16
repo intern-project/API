@@ -19,5 +19,7 @@ namespace API.Models
         public int pending { get; set; }
         public int accepted { get; set; }
         public int declined { get; set; }
+        public int userId { get; set; }
+        public int rowId { get; set; }
     }
 }
